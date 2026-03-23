@@ -64,8 +64,8 @@ const PROJECTS = [
   {
     emoji:    "🤖",
     title:    "StudyAI",
-    desc:     "Assistant d'étude intelligent : génération de fiches de révision, quiz adaptatifs et résumés à partir de tes cours. Intégration d'un LLM (Claude API) pour des réponses contextuelles et un mode Pomodoro intelligent.",
-    tags:     ["Next.js", "Claude API", "TypeScript", "PostgreSQL"],
+    desc:     "Assistant d'étude intelligent : génération de fiches de révision, quiz adaptatifs et résumés à partir de tes cours. Intégration d'une API IA pour des réponses contextuelles et un mode Pomodoro intelligent.",
+    tags:     ["Next.js", "API IA", "TypeScript", "PostgreSQL"],
     context:  "Projet personnel",
     status:   "wip"     as const,
     year:     "2026",
