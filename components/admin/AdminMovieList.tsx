@@ -10,21 +10,29 @@ interface AdminMovieListProps {
 }
 
 export default function AdminMovieList({ initialMovies }: AdminMovieListProps) {
-  const [movies, setMovies]     = useState<Movie[]>(initialMovies);
-  const [showForm, setShowForm] = useState(false);
-  const [deleting, setDeleting] = useState<string | null>(null);
-  const [seeding, setSeeding]   = useState(false);
-  const [seedMsg, setSeedMsg]   = useState("");
+  const [movies, setMovies]           = useState<Movie[]>(initialMovies);
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [editingMovie, setEditingMovie] = useState<Movie | null>(null);
+  const [deleting, setDeleting]       = useState<string | null>(null);
+  const [seeding, setSeeding]         = useState(false);
+  const [seedMsg, setSeedMsg]         = useState("");
+
+  // ── Helpers liste ──────────────────────────────────────────────────────────
+  async function refreshList() {
+    const res  = await fetch("/api/movies?all=1");
+    const data = await res.json();
+    setMovies(data);
+  }
 
   // ── Suppression ────────────────────────────────────────────────────────────
   async function handleDelete(id: string, title: string) {
     if (!confirm(`Supprimer "${title}" ? Cette action est irréversible.`)) return;
-
     setDeleting(id);
     try {
       const res = await fetch(`/api/movies/${id}`, { method: "DELETE" });
       if (!res.ok) throw new Error("Échec de la suppression");
       setMovies((prev) => prev.filter((m) => m.id !== id));
+      if (editingMovie?.id === id) setEditingMovie(null);
     } catch (err) {
       alert(err instanceof Error ? err.message : "Erreur");
     } finally {
@@ -48,19 +56,23 @@ export default function AdminMovieList({ initialMovies }: AdminMovieListProps) {
     }
   }
 
-  // ── Seed : importer les 20 films locaux ───────────────────────────────────
+  // ── Édition ────────────────────────────────────────────────────────────────
+  function handleEdit(movie: Movie) {
+    setEditingMovie(movie);
+    setShowAddForm(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // ── Seed ───────────────────────────────────────────────────────────────────
   async function handleSeed() {
-    if (!confirm("Importer les 20 films de la base locale dans Supabase ?")) return;
+    if (!confirm("Importer les films de la base locale dans Supabase ?")) return;
     setSeeding(true);
     setSeedMsg("");
     try {
       const res  = await fetch("/api/admin/seed", { method: "POST" });
       const data = await res.json();
       setSeedMsg(`✓ ${data.ok} films importés${data.error > 0 ? ` · ${data.error} erreurs` : ""}`);
-      // Recharge la liste
-      const listRes = await fetch("/api/movies?all=1");
-      const list    = await listRes.json();
-      setMovies(list);
+      await refreshList();
     } catch {
       setSeedMsg("Erreur lors de l'import");
     } finally {
@@ -74,18 +86,22 @@ export default function AdminMovieList({ initialMovies }: AdminMovieListProps) {
     window.location.href = "/admin/login";
   }
 
+  const formVisible = showAddForm || !!editingMovie;
+
   return (
     <div>
-      {/* ── Header admin ── */}
+      {/* ── Header ── */}
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-white font-bold text-2xl">Films</h1>
-          <p className="text-zinc-500 text-sm mt-0.5">{movies.length} film{movies.length > 1 ? "s" : ""} dans la base</p>
+          <p className="text-zinc-500 text-sm mt-0.5">
+            {movies.length} film{movies.length > 1 ? "s" : ""} dans la base
+          </p>
         </div>
         <div className="flex items-center gap-3">
-          {!showForm && (
+          {!formVisible && (
             <button
-              onClick={() => setShowForm(true)}
+              onClick={() => setShowAddForm(true)}
               className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-zinc-950 font-semibold text-sm hover:from-amber-400 hover:to-orange-400 transition-all"
             >
               + Ajouter un film
@@ -100,30 +116,42 @@ export default function AdminMovieList({ initialMovies }: AdminMovieListProps) {
         </div>
       </div>
 
-      {/* ── Formulaire d'ajout ── */}
-      {showForm && (
+      {/* ── Formulaire ajout ── */}
+      {showAddForm && !editingMovie && (
         <div className="mb-8">
           <AdminMovieForm
-            onSuccess={({ title }) => {
-              setShowForm(false);
-              // Recharge la liste depuis l'API pour avoir le bon id
-              fetch("/api/movies?all=1")
-                .then((r) => r.json())
-                .then(setMovies);
+            onSuccess={async ({ title }) => {
+              setShowAddForm(false);
+              await refreshList();
               alert(`✓ "${title}" ajouté avec succès`);
             }}
-            onCancel={() => setShowForm(false)}
+            onCancel={() => setShowAddForm(false)}
           />
         </div>
       )}
 
-      {/* ── Bouton seed (si base vide) ── */}
-      {movies.length === 0 && !showForm && (
+      {/* ── Formulaire édition ── */}
+      {editingMovie && (
+        <div className="mb-8">
+          <AdminMovieForm
+            movieToEdit={editingMovie}
+            onSuccess={async ({ title }) => {
+              setEditingMovie(null);
+              await refreshList();
+              alert(`✓ "${title}" modifié avec succès`);
+            }}
+            onCancel={() => setEditingMovie(null)}
+          />
+        </div>
+      )}
+
+      {/* ── Base vide ── */}
+      {movies.length === 0 && !formVisible && (
         <div className="text-center py-16 border border-dashed border-zinc-800 rounded-2xl mb-8">
           <p className="text-zinc-500 mb-4">Aucun film dans la base</p>
           <div className="flex flex-col items-center gap-3">
             <button
-              onClick={() => setShowForm(true)}
+              onClick={() => setShowAddForm(true)}
               className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-zinc-950 font-semibold text-sm"
             >
               + Ajouter mon premier film
@@ -133,15 +161,15 @@ export default function AdminMovieList({ initialMovies }: AdminMovieListProps) {
               disabled={seeding}
               className="px-6 py-2 rounded-xl border border-zinc-700 text-zinc-400 text-sm hover:border-zinc-500 transition-colors disabled:opacity-50"
             >
-              {seeding ? "Import en cours…" : "Ou importer les 20 films de démo"}
+              {seeding ? "Import en cours…" : "Ou importer les films de démo"}
             </button>
             {seedMsg && <p className="text-amber-400 text-sm">{seedMsg}</p>}
           </div>
         </div>
       )}
 
-      {/* ── Option seed rapide si quelques films existent ── */}
-      {movies.length > 0 && movies.length < 5 && (
+      {/* ── Seed rapide ── */}
+      {movies.length > 0 && movies.length < 5 && !formVisible && (
         <div className="mb-6 flex items-center gap-3">
           <button
             onClick={handleSeed}
@@ -154,19 +182,21 @@ export default function AdminMovieList({ initialMovies }: AdminMovieListProps) {
         </div>
       )}
 
-      {/* ── Liste des films ── */}
+      {/* ── Liste ── */}
       {movies.length > 0 && (
         <div className="space-y-3">
           {movies.map((movie) => (
             <div
               key={movie.id}
               className={`flex items-center gap-4 p-4 rounded-xl border transition-colors ${
-                movie.isActive
+                editingMovie?.id === movie.id
+                  ? "bg-amber-500/5 border-amber-500/30"
+                  : movie.isActive
                   ? "bg-zinc-900 border-zinc-800 hover:border-zinc-700"
                   : "bg-zinc-900/50 border-zinc-800/50 opacity-50"
               }`}
             >
-              {/* Affiche miniature */}
+              {/* Miniature affiche */}
               <div className="w-12 h-16 shrink-0 rounded-lg overflow-hidden bg-zinc-800 flex items-center justify-center">
                 {movie.posterUrl ? (
                   <Image
@@ -175,6 +205,7 @@ export default function AdminMovieList({ initialMovies }: AdminMovieListProps) {
                     width={48}
                     height={64}
                     className="object-cover w-full h-full"
+                    unoptimized={movie.posterUrl.startsWith("/posters/")}
                   />
                 ) : (
                   <span className="text-zinc-600 text-lg font-black">
@@ -197,6 +228,11 @@ export default function AdminMovieList({ initialMovies }: AdminMovieListProps) {
                       Inactif
                     </span>
                   )}
+                  {movie.posterUrl && (
+                    <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] border border-emerald-500/20">
+                      🖼 Affiche
+                    </span>
+                  )}
                 </div>
                 <p className="text-zinc-500 text-xs mt-0.5">
                   {movie.releaseYear} · {movie.genres.slice(0, 2).join(", ")}
@@ -213,9 +249,19 @@ export default function AdminMovieList({ initialMovies }: AdminMovieListProps) {
               {/* Actions */}
               <div className="flex items-center gap-2 shrink-0">
                 <button
+                  onClick={() => handleEdit(movie)}
+                  disabled={!!editingMovie && editingMovie.id !== movie.id}
+                  className={`px-3 py-1.5 rounded-lg border text-xs transition-colors ${
+                    editingMovie?.id === movie.id
+                      ? "border-amber-500/50 bg-amber-500/10 text-amber-400"
+                      : "border-zinc-700 text-zinc-400 hover:border-amber-500/50 hover:text-amber-400 disabled:opacity-30"
+                  }`}
+                >
+                  {editingMovie?.id === movie.id ? "En cours…" : "Modifier"}
+                </button>
+                <button
                   onClick={() => handleToggleActive(movie)}
                   className="px-3 py-1.5 rounded-lg border border-zinc-700 text-zinc-400 text-xs hover:border-zinc-500 hover:text-zinc-200 transition-colors"
-                  title={movie.isActive ? "Désactiver" : "Activer"}
                 >
                   {movie.isActive ? "Désactiver" : "Activer"}
                 </button>
