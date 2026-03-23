@@ -27,6 +27,12 @@ export default function Navbar() {
         >
           Moods
         </Link>
+        <Link
+          href="/about"
+          className="hidden sm:block text-sm text-zinc-400 hover:text-white transition-colors duration-200"
+        >
+          À propos
+        </Link>
 
         {/* CTA */}
         <Link
