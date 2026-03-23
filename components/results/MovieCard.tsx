@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import type { ScoredMovie } from "@/types/movie";
@@ -41,7 +42,10 @@ function formatDuration(minutes: number): string {
 
 export default function MovieCard({ scoredMovie, rank }: MovieCardProps) {
   const { movie, matchedTags } = scoredMovie;
-  const gradient = GENRE_GRADIENTS[movie.genres[0]] ?? "from-zinc-800 via-zinc-900 to-zinc-950";
+  const [imgError, setImgError] = useState(false);
+
+  const gradient  = GENRE_GRADIENTS[movie.genres[0]] ?? "from-zinc-800 via-zinc-900 to-zinc-950";
+  const showImage = !!movie.posterUrl && !imgError;
 
   const displayTags = matchedTags
     .filter((t) => t.startsWith("feel:") || t.startsWith("theme:") || t.startsWith("vibe:"))
@@ -57,15 +61,19 @@ export default function MovieCard({ scoredMovie, rank }: MovieCardProps) {
     >
       {/* ── Affiche ── */}
       <div className="relative aspect-[2/3] w-full overflow-hidden bg-zinc-900 shrink-0">
-        {movie.posterUrl ? (
+
+        {/* Image poster */}
+        {showImage ? (
           <Image
-            src={movie.posterUrl}
+            src={movie.posterUrl!}
             alt={movie.title}
             fill
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+            className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06]"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            onError={() => setImgError(true)}
           />
         ) : (
+          /* Fallback gradient si pas d'image ou erreur de chargement */
           <div className={`absolute inset-0 bg-gradient-to-b ${gradient} flex flex-col items-center justify-center`}>
             <span className="text-7xl font-black text-white/8 select-none leading-none">
               {movie.title.charAt(0)}
@@ -73,10 +81,14 @@ export default function MovieCard({ scoredMovie, rank }: MovieCardProps) {
           </div>
         )}
 
-        {/* Overlay gradient dramatique */}
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/95 via-zinc-950/20 to-transparent" />
-        {/* Subtle side vignette */}
-        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/20 via-transparent to-zinc-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {/* Overlay : plus léger quand il y a une vraie affiche pour la laisser respirer */}
+        <div className={`absolute inset-0 bg-gradient-to-t ${
+          showImage
+            ? "from-zinc-950/90 via-zinc-950/10 to-transparent"
+            : "from-zinc-950/95 via-zinc-950/20 to-transparent"
+        }`} />
+        {/* Vignette latérale au hover */}
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/15 via-transparent to-zinc-950/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
         {/* Badge rang */}
         <div className="absolute top-3 left-3 w-9 h-9 rounded-xl bg-amber-500 text-zinc-950 text-xs font-black flex items-center justify-center shadow-xl shadow-amber-500/40 glow-badge">
