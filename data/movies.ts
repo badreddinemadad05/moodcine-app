@@ -574,4 +574,539 @@ export const MOVIES: Movie[] = [
     isFeatured: false,
     isActive: true,
   },
+
+  // ════════════════════════════════════════════════════════════════════════════
+  //  AJOUT — Lot 2
+  // ════════════════════════════════════════════════════════════════════════════
+
+  // ── Cinéma d'auteur / Intense ─────────────────────────────────────────────
+
+  {
+    id: "pulp-fiction",
+    title: "Pulp Fiction",
+    slug: "pulp-fiction",
+    posterUrl: null,
+    shortDescription:
+      "Plusieurs histoires criminelles s'entrelacent dans un Los Angeles underground — entre violence, humour noir et dialogues cultes.",
+    description:
+      "Deux tueurs à gages philosophes, une danseuse de gangster, un boxeur en fuite et deux braqueurs de fast-food. Tarantino réinvente la narration et crée l'un des films les plus influents de tous les temps.",
+    releaseYear: 1994,
+    duration: 154,
+    director: "Quentin Tarantino",
+    genres: ["thriller", "drama"],
+    platforms: ["prime"],
+    moodTags: ["energetic", "lost"],
+    emotionGoalTags: ["shock", "think", "excite"],
+    themeTags: ["redemption", "identity", "society"],
+    vibeTags: ["dark", "quirky", "raw"],
+    contextTags: ["solo", "friends"],
+    intensity: "intense",
+    endingType: "open",
+    recommendationReason:
+      "Pour quand tu veux du cinéma qui ne ressemble à rien d'autre — brutal, drôle, inoubliable, et toujours aussi frais 30 ans après.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  {
+    id: "mulholland-drive",
+    title: "Mulholland Drive",
+    slug: "mulholland-drive",
+    posterUrl: null,
+    shortDescription:
+      "Une aspirante actrice et une femme amnésique s'enfoncent dans un rêve de Los Angeles qui vire au cauchemar.",
+    description:
+      "Betty arrive à Hollywood pleine d'espoir. Elle rencontre Rita, qui a survécu à un accident et ne se souvient de rien. Ensemble, elles tirent un fil qui mène vers les recoins les plus sombres de l'identité et du désir. David Lynch à son état le plus hypnotique.",
+    releaseYear: 2001,
+    duration: 147,
+    director: "David Lynch",
+    genres: ["thriller", "drama"],
+    platforms: ["mubi"],
+    moodTags: ["lost", "energetic"],
+    emotionGoalTags: ["think", "shock"],
+    themeTags: ["identity", "mystery", "art"],
+    vibeTags: ["dark", "tense", "poetic"],
+    contextTags: ["solo"],
+    intensity: "intense",
+    endingType: "open",
+    recommendationReason:
+      "Si tu veux que le cinéma te dérange, te fascine, et t'obsède encore des jours après — un rêve éveillé dont on ne sort pas indemne.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  {
+    id: "shutter-island",
+    title: "Shutter Island",
+    slug: "shutter-island",
+    posterUrl: null,
+    shortDescription:
+      "Un marshal fédéral enquête sur la disparition d'une patiente dans un asile psychiatrique isolé — et remet en question sa propre santé mentale.",
+    description:
+      "Teddy Daniels et son coéquipier arrivent sur l'île de Shutter Island pour retrouver une patiente disparue. Mais l'enquête dérape. Les murs parlent, les patients sourient trop, et la réalité se fissure. Scorsese signe un thriller psychologique dévastateur.",
+    releaseYear: 2010,
+    duration: 138,
+    director: "Martin Scorsese",
+    genres: ["thriller", "drama"],
+    platforms: ["prime", "netflix"],
+    moodTags: ["energetic", "stressed"],
+    emotionGoalTags: ["shock", "think"],
+    themeTags: ["identity", "mystery", "survival"],
+    vibeTags: ["dark", "tense", "raw"],
+    contextTags: ["solo", "couple"],
+    intensity: "intense",
+    endingType: "sad",
+    recommendationReason:
+      "Un labyrinthe psychologique dont tu ne ressortiras pas indemne — le twist final restera gravé longtemps.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  // ── Action / Épique ───────────────────────────────────────────────────────
+
+  {
+    id: "skyfall",
+    title: "Skyfall",
+    slug: "skyfall",
+    posterUrl: null,
+    shortDescription:
+      "James Bond revient de loin pour protéger le MI6 d'un ennemi fantôme qui connaît tous ses secrets.",
+    description:
+      "Après une mission ratée qui le laisse pour mort, Bond doit ressurgir pour protéger M et le MI6 d'un ennemi imprévisible sorti de l'ombre. Sam Mendes signe le Bond le plus humain et le plus émotionnel de la saga.",
+    releaseYear: 2012,
+    duration: 143,
+    director: "Sam Mendes",
+    genres: ["action", "thriller"],
+    platforms: ["prime"],
+    moodTags: ["energetic", "stressed"],
+    emotionGoalTags: ["excite", "drift", "inspire"],
+    themeTags: ["redemption", "identity", "survival"],
+    vibeTags: ["epic", "tense", "dark"],
+    contextTags: ["solo", "couple", "friends"],
+    intensity: "intense",
+    endingType: "bittersweet",
+    recommendationReason:
+      "L'action Bond à son niveau le plus épique et le plus humain — une identité questionnée, une loyauté mise à l'épreuve.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  {
+    id: "edge-of-tomorrow",
+    title: "Edge of Tomorrow",
+    slug: "edge-of-tomorrow",
+    posterUrl: null,
+    shortDescription:
+      "Un soldat revit la même bataille en boucle — chaque mort lui permet d'aller un peu plus loin.",
+    description:
+      "Le major Cage est parachuté dans un conflit futuriste sans avoir jamais combattu. Il meurt rapidement. Mais il se réveille au même point, encore et encore. Avec chaque cycle, il devient meilleur. Doug Liman réinvente le film de guerre avec une mécanique brillante.",
+    releaseYear: 2014,
+    duration: 113,
+    director: "Doug Liman",
+    genres: ["action", "sci-fi"],
+    platforms: ["prime", "netflix"],
+    moodTags: ["energetic", "stressed", "happy"],
+    emotionGoalTags: ["excite", "think"],
+    themeTags: ["survival", "second-chance", "adventure"],
+    vibeTags: ["epic", "tense"],
+    contextTags: ["solo", "couple", "friends"],
+    intensity: "intense",
+    endingType: "happy",
+    recommendationReason:
+      "Mourir, recommencer, s'améliorer — un film de SF qui tient en haleine sans jamais lâcher, et avec une vraie intelligence.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  {
+    id: "inglourious-basterds",
+    title: "Inglourious Basterds",
+    slug: "inglourious-basterds",
+    posterUrl: null,
+    shortDescription:
+      "Des soldats juifs partent en guerre dans la France occupée pour scalper des nazis — et réécrire l'Histoire.",
+    description:
+      "Dans la France de 1944, deux plans parallèles se rejoignent pour tenter d'assassiner la hiérarchie nazie dans un cinéma parisien. Tarantino réécrit la Seconde Guerre mondiale avec son style tranchant et ses dialogues au rasoir.",
+    releaseYear: 2009,
+    duration: 153,
+    director: "Quentin Tarantino",
+    genres: ["action", "thriller", "drama"],
+    platforms: ["prime", "netflix"],
+    moodTags: ["energetic"],
+    emotionGoalTags: ["excite", "shock", "think"],
+    themeTags: ["redemption", "society", "survival"],
+    vibeTags: ["dark", "epic", "tense", "raw"],
+    contextTags: ["solo", "friends"],
+    intensity: "intense",
+    endingType: "happy",
+    recommendationReason:
+      "Du cinéma au rasoir — tension extrême, humour noir et une réécriture de l'Histoire aussi jouissive que provocatrice.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  {
+    id: "django-unchained",
+    title: "Django Unchained",
+    slug: "django-unchained",
+    posterUrl: null,
+    shortDescription:
+      "Un esclave affranchi parcourt le Sud américain avec un chasseur de primes pour libérer sa femme.",
+    description:
+      "Django, esclave libéré, s'associe au Dr King Schultz pour retrouver sa femme Broomhilda, vendue à un cruel propriétaire de plantation. Tarantino livre un western de vengeance viscéral, violent et libérateur, sur fond d'esclavage américain.",
+    releaseYear: 2012,
+    duration: 165,
+    director: "Quentin Tarantino",
+    genres: ["action", "drama"],
+    platforms: ["prime", "netflix"],
+    moodTags: ["energetic"],
+    emotionGoalTags: ["excite", "shock", "inspire"],
+    themeTags: ["redemption", "survival", "romance", "identity"],
+    vibeTags: ["dark", "epic", "raw"],
+    contextTags: ["solo", "friends"],
+    intensity: "intense",
+    endingType: "happy",
+    recommendationReason:
+      "Un western de vengeance brillant et libérateur — l'histoire d'un homme qui reprend sa vie, sa dignité et sa femme.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  {
+    id: "kraven-the-hunter",
+    title: "Kraven the Hunter",
+    slug: "kraven-the-hunter",
+    posterUrl: null,
+    shortDescription:
+      "L'origine du chasseur le plus redouté de l'univers Marvel — entre instinct animal et sens de la justice.",
+    description:
+      "Sergei Kravinoff est un chasseur d'élite poussé par un passé traumatique à devenir quelque chose de plus que humain. Sony Pictures présente l'anti-héros Marvel sous un angle sombre et viscéral.",
+    releaseYear: 2024,
+    duration: 127,
+    director: "J.C. Chandor",
+    genres: ["action", "fantasy"],
+    platforms: ["prime"],
+    moodTags: ["energetic"],
+    emotionGoalTags: ["excite", "drift"],
+    themeTags: ["identity", "survival", "redemption"],
+    vibeTags: ["dark", "epic"],
+    contextTags: ["solo", "friends"],
+    intensity: "intense",
+    endingType: "hopeful",
+    recommendationReason:
+      "Pour les fans de Marvel qui veulent explorer les origines d'un chasseur impitoyable — sombre, viscéral, sans fioritures.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  // ── Drame / Introspection ─────────────────────────────────────────────────
+
+  {
+    id: "famille-tenenbaum",
+    title: "La Famille Tenenbaum",
+    slug: "famille-tenenbaum",
+    originalTitle: "The Royal Tenenbaums",
+    posterUrl: null,
+    shortDescription:
+      "Trois enfants prodiges devenus adultes ratés se retrouvent autour de leur père qui prétend mourir.",
+    description:
+      "Royal Tenenbaum annonce à sa famille qu'il est mourant pour les réunir. Mais ses trois enfants — autrefois des génies — ont tous sombré à leur façon. Wes Anderson signe son film le plus mélancolique, une méditation tendre sur l'échec, la réconciliation et l'amour familial.",
+    releaseYear: 2001,
+    duration: 110,
+    director: "Wes Anderson",
+    genres: ["comedy", "drama"],
+    platforms: ["prime"],
+    moodTags: ["sad", "nostalgic", "lost"],
+    emotionGoalTags: ["think", "cry", "drift"],
+    themeTags: ["family", "redemption", "second-chance", "identity"],
+    vibeTags: ["quirky", "poetic", "intimate"],
+    contextTags: ["solo"],
+    intensity: "balanced",
+    endingType: "bittersweet",
+    recommendationReason:
+      "Pour les soirs où tu penses à ta famille — avec toutes ses fractures, ses absurdités et sa tendresse enfouie.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  {
+    id: "war-machine",
+    title: "War Machine",
+    slug: "war-machine",
+    posterUrl: null,
+    shortDescription:
+      "Un général américain aussi charismatique qu'aveugle tente de gagner une guerre ingagnable en Afghanistan.",
+    description:
+      "Le général Glen McMahon débarque en Afghanistan avec l'absolue conviction qu'il peut gagner. Brad Pitt livre une performance absurde et glaçante dans cette satire politique acide inspirée de faits réels, sur l'ego militaire et les illusions du pouvoir.",
+    releaseYear: 2017,
+    duration: 122,
+    director: "David Michôd",
+    genres: ["drama", "biography"],
+    platforms: ["netflix"],
+    moodTags: ["energetic", "lost"],
+    emotionGoalTags: ["think", "laugh", "shock"],
+    themeTags: ["ambition", "society", "identity"],
+    vibeTags: ["dark", "quirky", "raw"],
+    contextTags: ["solo", "friends"],
+    intensity: "balanced",
+    endingType: "sad",
+    recommendationReason:
+      "Une satire grinçante sur la guerre et l'ego — Brad Pitt dans un rôle absurde, pour un film que tout le monde a oublié à tort.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  {
+    id: "double-jeopardy",
+    title: "Double Jeopardy",
+    slug: "double-jeopardy",
+    posterUrl: null,
+    shortDescription:
+      "Une femme condamnée à tort pour le meurtre de son mari — qui est bien vivant — décide de le retrouver à sa sortie de prison.",
+    description:
+      "Libbie Parsons est condamnée pour le meurtre de son mari Nick. En prison, elle découvre qu'il est en réalité vivant et qu'il l'a piégée pour recommencer une nouvelle vie. À sa libération, elle n'a qu'une idée en tête : le retrouver.",
+    releaseYear: 1999,
+    duration: 105,
+    director: "Bruce Beresford",
+    genres: ["thriller", "drama"],
+    platforms: ["prime"],
+    moodTags: ["energetic", "stressed"],
+    emotionGoalTags: ["excite", "inspire"],
+    themeTags: ["survival", "redemption", "second-chance", "identity"],
+    vibeTags: ["tense", "raw"],
+    contextTags: ["solo", "couple"],
+    intensity: "intense",
+    endingType: "happy",
+    recommendationReason:
+      "Pour les soirs où tu veux voir quelqu'un reprendre le contrôle de sa vie — une injustice, une femme, une vengeance méritée.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  {
+    id: "street-flow-3",
+    title: "Street Flow 3",
+    slug: "street-flow-3",
+    originalTitle: "Banlieusards 3",
+    posterUrl: null,
+    shortDescription:
+      "Le retour de Noumouké et ses frères dans la banlieue parisienne — entre choix impossibles et destins contrariés.",
+    description:
+      "Troisième volet de la saga Banlieusards portée par Kery James. Les frères affrontent une nouvelle fois les contradictions de la banlieue, entre ascension sociale, loyauté et identité.",
+    releaseYear: 2025,
+    duration: 105,
+    director: "Leïla Sy",
+    genres: ["drama"],
+    platforms: ["netflix"],
+    moodTags: ["sad", "lost", "energetic"],
+    emotionGoalTags: ["think", "inspire", "cry"],
+    themeTags: ["identity", "family", "society", "redemption"],
+    vibeTags: ["raw", "intimate", "dark"],
+    contextTags: ["solo", "friends"],
+    intensity: "intense",
+    endingType: "hopeful",
+    recommendationReason:
+      "La saga française la plus puissante sur la banlieue — des frères, des choix, et une réalité sociale qui ne lâche rien.",
+    isFeatured: false,
+    isActive: false,
+  },
+
+  // ── Comédie / Feel-good ───────────────────────────────────────────────────
+
+  {
+    id: "crazy-stupid-love",
+    title: "Crazy, Stupid, Love",
+    slug: "crazy-stupid-love",
+    posterUrl: null,
+    shortDescription:
+      "Un quinquagénaire largué reprend goût à la vie grâce à un dragueur professionnel — et redécouvre ce qu'est vraiment l'amour.",
+    description:
+      "Cal apprend que sa femme Emily veut divorcer. Perdu, il rencontre Jacob, séducteur aux méthodes brutalement efficaces. Mais l'amour a ses propres règles. Une comédie romantique intelligente et surprenante, avec un cast impeccable.",
+    releaseYear: 2011,
+    duration: 118,
+    director: "Glenn Ficarra & John Requa",
+    genres: ["comedy", "romance"],
+    platforms: ["netflix", "prime"],
+    moodTags: ["happy", "sad", "nostalgic"],
+    emotionGoalTags: ["laugh", "drift", "comfort"],
+    themeTags: ["romance", "second-chance", "identity"],
+    vibeTags: ["feel-good", "quirky", "intimate"],
+    contextTags: ["couple", "solo", "friends"],
+    intensity: "balanced",
+    endingType: "happy",
+    recommendationReason:
+      "Drôle, sincère et surprenant — une comédie romantique qui te fera croire que l'amour mérite toujours une deuxième chance.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  {
+    id: "due-date",
+    title: "Due Date",
+    slug: "due-date",
+    originalTitle: "Due Date",
+    posterUrl: null,
+    shortDescription:
+      "Un père pressé de rentrer pour la naissance de son enfant se retrouve coincé dans un road trip chaotique avec le pire compagnon possible.",
+    description:
+      "Peter Highman doit traverser les États-Unis en urgence. Problème : il se retrouve à partager la route avec Ethan, un acteur raté aussi encombrant qu'attachant. Robert Downey Jr. et Zach Galifianakis dans un duo hilarant.",
+    releaseYear: 2010,
+    duration: 95,
+    director: "Todd Phillips",
+    genres: ["comedy"],
+    platforms: ["prime", "netflix"],
+    moodTags: ["stressed", "happy", "tired"],
+    emotionGoalTags: ["laugh", "drift"],
+    themeTags: ["friendship", "adventure", "second-chance"],
+    vibeTags: ["quirky", "feel-good"],
+    contextTags: ["friends", "solo", "couple"],
+    intensity: "calm",
+    endingType: "happy",
+    recommendationReason:
+      "Pour rire franchement et décrocher du stress — deux inconnus, une route et un chaos total qui ne laisse aucune respiration.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  {
+    id: "27-dresses",
+    title: "27 Dresses",
+    slug: "27-dresses",
+    posterUrl: null,
+    shortDescription:
+      "Une femme qui a été demoiselle d'honneur 27 fois tombe amoureuse — mais sa sœur épouse d'abord l'homme de sa vie.",
+    description:
+      "Jane est la demoiselle d'honneur parfaite : organisatrice, dévouée, toujours au service des autres. Mais quand sa sœur annonce ses fiançailles avec l'homme dont Jane est secrètement amoureuse, tout se complique. Une comédie romantique classique et sincère.",
+    releaseYear: 2008,
+    duration: 111,
+    director: "Anne Fletcher",
+    genres: ["comedy", "romance"],
+    platforms: ["prime"],
+    moodTags: ["happy", "sad", "tired"],
+    emotionGoalTags: ["laugh", "comfort", "drift"],
+    themeTags: ["romance", "second-chance", "identity"],
+    vibeTags: ["feel-good", "whimsical", "intimate"],
+    contextTags: ["solo", "couple", "friends"],
+    intensity: "calm",
+    endingType: "happy",
+    recommendationReason:
+      "La comédie romantique parfaite pour un soir cocooning — légère, drôle, réconfortante, et avec un twist qu'on ne voit pas venir.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  // ── Animation / Famille ───────────────────────────────────────────────────
+
+  {
+    id: "shark-tale",
+    title: "Shark Tale",
+    slug: "shark-tale",
+    posterUrl: null,
+    shortDescription:
+      "Un petit poisson faussement courageux devient célèbre en se faisant passer pour un tueur de requins.",
+    description:
+      "Oscar, poisson de récif fauché et ambitieux, se retrouve accidentellement impliqué dans la mort du fils d'un grand requin mafieux. Il en profite pour se faire passer pour un héros. Une parodie hilarante des films de gangsters, façon fond marin.",
+    releaseYear: 2004,
+    duration: 90,
+    director: "Vicky Jenson, Bibo Bergeron, Rob Letterman",
+    genres: ["animation", "comedy"],
+    platforms: ["netflix", "prime"],
+    moodTags: ["happy", "tired", "stressed"],
+    emotionGoalTags: ["laugh", "drift"],
+    themeTags: ["identity", "society", "friendship"],
+    vibeTags: ["feel-good", "quirky", "whimsical"],
+    contextTags: ["family", "friends", "solo"],
+    intensity: "calm",
+    endingType: "happy",
+    recommendationReason:
+      "Un dessin animé qui se moque de tout — des gangsters, des mensonges, et de ceux qui font semblant d'être ce qu'ils ne sont pas.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  {
+    id: "the-boss-baby",
+    title: "Le Boss Bébé",
+    slug: "le-boss-bebe",
+    originalTitle: "The Boss Baby",
+    posterUrl: null,
+    shortDescription:
+      "Un bébé en costume arrive dans une famille normale — avec un attaché-case, un agenda, et une mission secrète.",
+    description:
+      "Tim, 7 ans, voit son monde bouleversé par l'arrivée d'un bébé qui parle et se comporte comme un PDG. Ensemble, malgré leur rivalité, ils doivent coopérer pour sauver l'amour des parents. DreamWorks livre une comédie familiale décalée et pleine d'énergie.",
+    releaseYear: 2017,
+    duration: 97,
+    director: "Tom McGrath",
+    genres: ["animation", "comedy"],
+    platforms: ["netflix", "prime"],
+    moodTags: ["happy", "tired"],
+    emotionGoalTags: ["laugh", "drift"],
+    themeTags: ["family", "identity"],
+    vibeTags: ["whimsical", "feel-good", "quirky"],
+    contextTags: ["family", "solo"],
+    intensity: "calm",
+    endingType: "happy",
+    recommendationReason:
+      "Un bébé en costume qui parle business — drôle pour les enfants, hilarant pour les adultes qui se reconnaissent dans le grand frère.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  {
+    id: "barnyard",
+    title: "Barnyard",
+    slug: "barnyard",
+    originalTitle: "Barnyard",
+    posterUrl: null,
+    shortDescription:
+      "Quand les humains s'endorment, les animaux de la ferme prennent la fête — jusqu'à ce que les responsabilités rattrapent le plus fou d'entre eux.",
+    description:
+      "Otis est une vache (mâle) qui préfère faire la fête plutôt que de protéger la ferme. Mais quand des coyotes menacent les animaux, il doit choisir entre son insouciance et le rôle de leader que son père lui a légué. Un film d'animation simple, drôle et touchant.",
+    releaseYear: 2006,
+    duration: 90,
+    director: "Steve Oedekerk",
+    genres: ["animation", "comedy"],
+    platforms: ["prime"],
+    moodTags: ["happy", "tired"],
+    emotionGoalTags: ["laugh", "drift"],
+    themeTags: ["family", "identity", "second-chance"],
+    vibeTags: ["feel-good", "whimsical"],
+    contextTags: ["family", "friends"],
+    intensity: "calm",
+    endingType: "happy",
+    recommendationReason:
+      "La ferme qui s'emballe quand les humains dorment — simple, joyeux, et parfait pour se détendre sans se prendre la tête.",
+    isFeatured: false,
+    isActive: true,
+  },
+
+  // ── Documentaire ─────────────────────────────────────────────────────────
+
+  {
+    id: "louis-theroux-manosphere",
+    title: "Louis Theroux : Dans la Manosphère",
+    slug: "louis-theroux-manosphere",
+    originalTitle: "Louis Theroux: Inside the Manosphere",
+    posterUrl: null,
+    shortDescription:
+      "Louis Theroux rencontre les figures influentes de la manosphère pour comprendre de l'intérieur une idéologie qui façonne des millions de jeunes hommes.",
+    description:
+      "Le documentariste britannique Louis Theroux plonge dans l'univers des influenceurs masculinistes, des incels et des coaches en séduction pour comprendre comment ces idéologies se propagent et pourquoi elles séduisent tant de jeunes hommes en manque de repères.",
+    releaseYear: 2024,
+    duration: 60,
+    director: "Louis Theroux",
+    genres: ["documentary"],
+    platforms: ["netflix"],
+    moodTags: ["energetic", "lost"],
+    emotionGoalTags: ["think", "shock"],
+    themeTags: ["identity", "society"],
+    vibeTags: ["dark", "raw"],
+    contextTags: ["solo"],
+    intensity: "balanced",
+    endingType: "open",
+    recommendationReason:
+      "Louis Theroux au cœur d'internet le plus sombre — pour comprendre une idéologie qui touche des millions de jeunes hommes, sans les juger d'emblée.",
+    isFeatured: false,
+    isActive: true,
+  },
 ];
